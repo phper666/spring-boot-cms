@@ -1,0 +1,16 @@
+{"namespace": "com.github.phper666.avro",
+  "type": "record",
+  "name": "GpsDataAvro",
+  "fields": [
+    {"name": "id", "type": "long"},
+    {"name": "terminalId", "type": "string"},
+    {"name": "dataTime", "type": "string"},
+    {"name": "lon",  "type": "double"},
+    {"name": "lat",  "type": "double"},
+    {"name": "altitude", "type": "int"},
+    {"name": "locType", "type": "int"},
+    {"name": "gpsStatus", "type": "int"},
+    {"name": "direction", "type": "float"},
+    {"name": "satellite", "type": "int"}
+  ]
+ }

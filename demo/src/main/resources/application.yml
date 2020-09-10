@@ -1,0 +1,135 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为80
+  port: 8094
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    # Tomcat启动初始化的线程数，默认值25
+    threads:
+      max: 800
+      min-spare: 30
+
+
+# Spring配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://0.0.0.0:3308/test?characterEncoding=utf8
+    username: root
+    password: 123456
+    druid:
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username:
+        login-password:
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  # 数据库数据版本管理flyway
+  #flyway.baseline-description对执行迁移时基准版本的描述.
+  #flyway.baseline-on-migrate当迁移时发现目标schema非空，而且带有没有元数据的表时，是否自动执行基准迁移，默认false.
+  #flyway.baseline-version开始执行基准迁移时对现有的schema的版本打标签，默认值为1.
+  #flyway.check-location检查迁移脚本的位置是否存在，默认false.
+  #flyway.clean-on-validation-error当发现校验错误时是否自动调用clean，默认false.
+  #flyway.enabled是否开启flywary，默认true.
+  #flyway.encoding设置迁移时的编码，默认UTF-8.
+  #flyway.ignore-failed-future-migration当读取元数据表时是否忽略错误的迁移，默认false.
+  #flyway.init-sqls当初始化好连接时要执行的SQL.
+  #flyway.locations迁移脚本的位置，默认db/migration.
+  #flyway.out-of-order是否允许无序的迁移，默认false.
+  #flyway.password目标数据库的密码.
+  #flyway.placeholder-prefix设置每个placeholder的前缀，默认${.
+  #flyway.placeholder-replacementplaceholders是否要被替换，默认true.
+  #flyway.placeholder-suffix设置每个placeholder的后缀，默认}.
+  #flyway.placeholders.[placeholder name]设置placeholder的value
+  #flyway.schemas设定需要flywary迁移的schema，大小写敏感，默认为连接默认的schema.
+  #flyway.sql-migration-prefix迁移文件的前缀，默认为V.
+  #flyway.sql-migration-separator迁移脚本的文件名分隔符，默认__
+  #flyway.sql-migration-suffix迁移脚本的后缀，默认为.sql
+  #flyway.table flyway使用的元数据表名，默认为schema_version
+  #flyway.target迁移时使用的目标版本，默认为latest version
+  #flyway.url迁移时使用的JDBC URL，如果没有指定的话，将使用配置的主数据源
+  #flyway.user迁移数据库的用户名
+  #flyway.validate-on-migrate迁移时是否校验，默认为true.
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    clean-disabled: true
+    table: flyway_schema_history
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: static/i18n/messages
+  # 文件上传
+  servlet:
+     multipart:
+       # 单个文件大小
+       max-file-size:  10MB
+       # 设置总上传的文件大小
+       max-request-size:  20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+# MyBatis
+mybatis:
+    # 搜索指定包别名
+    typeAliasesPackage: com.ruoyi.**.domain
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件
+    mapperLocations: classpath*:mapper/**/*Mapper.xml
+    # 加载全局的配置文件
+    configLocation: classpath:mybatis/mybatis-config.xml
+
+# 防止XSS攻击
+xss: 
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/notice/*
+  # 匹配链接
+  urlPatterns: /system/*,/monitor/*,/tool/*
+
+# Swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: false
