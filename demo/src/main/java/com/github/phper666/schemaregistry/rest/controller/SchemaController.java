@@ -1,8 +1,8 @@
 package com.github.phper666.schemaregistry.rest.controller;
 
-import com.github.phper666.schemaregistry.rest.entity.SchemaRegister;
-import com.github.phper666.schemaregistry.rest.exception.SchemaRegisterException;
-import com.github.phper666.schemaregistry.rest.service.ISchemaRegisterService;
+import com.github.phper666.schemaregistry.rest.entity.SchemaRegistry;
+import com.github.phper666.schemaregistry.rest.exception.SchemaRegistryException;
+import com.github.phper666.schemaregistry.rest.service.ISchemaRegistryService;
 import com.github.phper666.schemaregistry.rest.service.IUserService;
 import com.github.phper666.schemaregistry.utils.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class SchemaController {
     private IUserService userService;
 
     @Autowired
-    private ISchemaRegisterService schemaService;
+    private ISchemaRegistryService schemaService;
 
     @GetMapping("/{schemaId}/version/{version}")
     public ResponseData getSchema(@PathVariable String schemaId, @PathVariable String version) {
@@ -39,12 +39,12 @@ public class SchemaController {
     }
 
     @PostMapping("")
-    public ResponseData createSchema(@RequestBody SchemaRegister schema) throws SchemaRegisterException {
+    public ResponseData createSchema(@RequestBody SchemaRegistry schema) throws SchemaRegistryException {
         return ResponseData.success(schemaService.createSchema(schema));
     }
 
     @PostMapping("/{schemaId}")
-    public ResponseData createSchemaById(@PathVariable String schemaId, @RequestBody SchemaRegister schema) throws SchemaRegisterException {
+    public ResponseData createSchemaById(@PathVariable String schemaId, @RequestBody SchemaRegistry schema) throws SchemaRegistryException {
         return ResponseData.success(schemaService.createSchemaById(schemaId, schema));
     }
 
@@ -52,7 +52,7 @@ public class SchemaController {
     public ResponseData updateSchema(
             @PathVariable String schemaId,
             @PathVariable String version,
-            @RequestBody SchemaRegister schema) {
+            @RequestBody SchemaRegistry schema) {
         return ResponseData.success(schemaService.updateSchema(schemaId, version, schema));
     }
 

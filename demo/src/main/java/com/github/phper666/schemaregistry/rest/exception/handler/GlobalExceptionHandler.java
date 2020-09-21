@@ -1,6 +1,6 @@
 package com.github.phper666.schemaregistry.rest.exception.handler;
 
-import com.github.phper666.schemaregistry.rest.exception.SchemaRegisterException;
+import com.github.phper666.schemaregistry.rest.exception.SchemaRegistryException;
 import com.github.phper666.schemaregistry.rest.exception.code.EnumCode;
 import com.github.phper666.schemaregistry.utils.ResponseData;
 import org.slf4j.Logger;
@@ -27,9 +27,9 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ExceptionHandler(value = SchemaRegisterException.class)
+    @ExceptionHandler(value = SchemaRegistryException.class)
     @ResponseBody
-    public ResponseData schemaRegisterExceptionHandler(HttpServletRequest req, SchemaRegisterException e){
+    public ResponseData schemaRegisterExceptionHandler(HttpServletRequest req, SchemaRegistryException e){
         logger.error("schema-register异常！原因是：{}",e.getErrMsg());
         return ResponseData.fail(e.getErrCode(),e.getErrMsg());
     }

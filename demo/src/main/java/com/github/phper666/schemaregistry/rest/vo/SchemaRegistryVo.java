@@ -10,7 +10,7 @@ import lombok.Data;
  * @software IntelliJ IDEA
  */
 @Data
-public class SchemaRegisterVo {
+public class SchemaRegistryVo {
     private Long id;
 
     private String schemaVersion;

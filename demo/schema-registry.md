@@ -17,6 +17,20 @@ CREATE TABLE `schema_register` (
 ```
 Each schema will have a corresponding version and ID    
 
+Schema modification record sheet design   
+```
+CREATE TABLE `test`.`schema_registry_record`
+(
+    `id`             bigint unsigned NOT NULL AUTO_INCREMENT,
+    `schema_registry_id`       bigint unsigned         DEFAULT NULL,
+    `old_schema_data`    json                          DEFAULT NULL COMMENT '修改前的schema文件数据',
+    `edit_schema_data`    json                         DEFAULT NULL COMMENT '修改schema文件数据',
+    `updated_at`     bigint                            DEFAULT NULL,
+    `created_at`     bigint                            DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+```
+
 #### Schema-validation
 At present, the Schema format only supports AVro provided by Apache, so the verification also USES the SDK package provided by Apache. Please check the documentation for details   
 [APACHE ARVO DOCUMENT](http://avro.apache.org/docs/current/spec.html)

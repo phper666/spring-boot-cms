@@ -1,7 +1,7 @@
 package com.github.phper666.schemaregistry.rest.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.phper666.schemaregistry.rest.entity.SchemaRegister;
+import com.github.phper666.schemaregistry.rest.entity.SchemaRegistry;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @software IntelliJ IDEA
  */
 @Repository
-public interface SchemaRegisterMapper extends BaseMapper<SchemaRegister> {
+public interface SchemaRegistryMapper extends BaseMapper<SchemaRegistry> {
 }

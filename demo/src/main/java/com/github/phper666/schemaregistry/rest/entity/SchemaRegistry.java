@@ -18,9 +18,9 @@ import java.util.Objects;
  * @date 2020/9/17 3:09 下午
  * @software IntelliJ IDEA
  */
-@TableName("schema_register")
+@TableName("schema_registry")
 @Data
-public class SchemaRegister implements Serializable {
+public class SchemaRegistry implements Serializable {
     private Long id;
 
     private String schemaVersion;
@@ -39,7 +39,7 @@ public class SchemaRegister implements Serializable {
     private Long updatedAt;
 
     @JsonCreator
-    public SchemaRegister(@JsonProperty("schema_version") String schemaVersion,
+    public SchemaRegistry(@JsonProperty("schema_version") String schemaVersion,
                           @JsonProperty("id") Long id,
                           @JsonProperty("schema_id") String schemaId,
                           @JsonProperty("schema_data") JSONObject schemaData,
@@ -55,7 +55,7 @@ public class SchemaRegister implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public SchemaRegister() {
+    public SchemaRegistry() {
 
     }
 
@@ -67,7 +67,7 @@ public class SchemaRegister implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SchemaRegister schema1 = (SchemaRegister) o;
+        SchemaRegistry schema1 = (SchemaRegistry) o;
         return Objects.equals(id, schema1.id)
                 && Objects.equals(schemaVersion, schema1.schemaVersion)
                 && Objects.equals(schemaId, schema1.schemaId)

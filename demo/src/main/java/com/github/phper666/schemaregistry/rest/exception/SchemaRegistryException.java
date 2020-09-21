@@ -16,13 +16,13 @@
 
 package com.github.phper666.schemaregistry.rest.exception;
 
-public class SchemaRegisterException extends Exception {
+public class SchemaRegistryException extends Exception {
 
   private final int status;
   private final int errCode;
   private final String errMsg;
 
-  public SchemaRegisterException(final String message, final int errCode, final int status) {
+  public SchemaRegistryException(final String message, final int errCode, final int status) {
     super(message + "; error code: " + errCode);
     this.status = status;
     this.errMsg = message;
